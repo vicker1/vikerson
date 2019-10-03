@@ -3,21 +3,25 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Model\Question;
+use App\Model\user;
 class Question extends Model
 {
-    //public function getRouteKeyName()
+    
 
-    // {
-      //  return 'slug';
-    //}
+        public function getRouteKeyName()
+    
+         { 
+            return 'slug';
+        }
+        
+       //protected $fillable = ['title','slug', 'body', 'category_id', 'user_id'];
+    protected $guarded = [];
 
-    //protected $fillable = ['title','slug', 'body', 'category_id', 'user_id'];
-    //protected $guarded = [];
-
+    
     public function user()
     {
-        return $this->belongsto(user::class);
+        return $this->belongsTo(user::class);
     }
 
     public function replies()
@@ -27,7 +31,20 @@ class Question extends Model
 
     public function category()
     {
-        return $this->belongsto(category::class);
+        return $this->belongsTo(category::class);
+    }
+
+    public function getpathAttribute()
+    {
+        return asset("api/question/$this->slug");
     }
 }
 
+//public function getRouteKeyName()
+
+    // {
+      //  return 'slug';
+    //}
+
+    //protected $fillable = ['title','slug', 'body', 'category_id', 'user_id'];
+    //protected $guarded = [];
