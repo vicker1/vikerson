@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Reply;
+use App\Model\Question;
 use Illuminate\Http\Request;
+use App\Http\Resources\ReplyResource;
+use Symfony\Component\HttpFoundation\Response;
+
 
 class Replycontroller extends Controller
 {
@@ -11,20 +16,22 @@ class Replycontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Question $question)
     {
-        //
+        return ReplyResource::collection($question->replies);
+       //return reply::latest()->get();
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Question $question, Request $request)
     {
-        //
+        $reply = $question->replies()->create($request->all());
+        return response(['reply'=> new ReplyResource($reply)], Response::HTTP_CREATED);
     }
 
     /**
@@ -33,9 +40,9 @@ class Replycontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Question $question, Reply $reply)
     {
-        //
+        return new ReplyResource($reply);
     }
 
     /**
@@ -45,9 +52,10 @@ class Replycontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Question $question, Request $request, Reply $reply)
     {
-        //
+        $reply->update($request->all());
+        return response('updated',Response::HTTP_ACCEPTED);
     }
 
     /**
@@ -56,8 +64,9 @@ class Replycontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Question $question, Request $request)
     {
-        //
+        $question->delete();
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }
