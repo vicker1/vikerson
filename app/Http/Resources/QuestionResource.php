@@ -3,7 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Model\user;
+use App\Model\User;
 
 class QuestionResource extends JsonResource
 {
@@ -21,7 +21,7 @@ class QuestionResource extends JsonResource
             'path' => $this->path,
             'body' => $this->body,
             'created_at' => $this->created_at->diffForHumans(),
-            //'user' => $this->user->name
+            //'User' => $this->User->name
         ];
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Model\user;
+use App\Model\User;
 use App\Model\Category;
 use App\Model\Question;
 use App\Model\Reply;
