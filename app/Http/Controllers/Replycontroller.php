@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Reply;
 use App\Model\Question;
+use App\Model\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\ReplyResource;
 use Symfony\Component\HttpFoundation\Response;

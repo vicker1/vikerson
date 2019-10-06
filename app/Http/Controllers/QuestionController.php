@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Question;
+use App\Model\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Resources\QuestionResource;

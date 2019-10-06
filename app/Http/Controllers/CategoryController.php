@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Category;
+use App\Model\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\CategoryResource;
 //use symFony\component\HttpFoundation\Response;

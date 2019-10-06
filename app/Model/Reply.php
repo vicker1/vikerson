@@ -4,6 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Model\Question;
+use App\Model\User;
 
 class Reply extends Model
 {
