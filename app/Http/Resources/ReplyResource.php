@@ -18,7 +18,7 @@ class ReplyResource extends JsonResource
             'id'=> $this->id,
             'reply'=> $this->body,
             //remember to fix app user model not found
-            //'user' => $this->user->name,
+            'user' => $this->user->name,
             'created_at' => $this -> created_at->diffForhumans()
         ];
     }

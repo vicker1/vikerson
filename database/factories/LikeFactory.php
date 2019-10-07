@@ -4,7 +4,7 @@
 
 use App\Model\Like;
 use Faker\Generator as Faker;
-use App\User;
+use App\Model\User;
 
 $factory->define(App\Model\Like::class, function (Faker $faker) {
 
