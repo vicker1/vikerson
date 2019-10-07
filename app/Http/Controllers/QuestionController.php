@@ -7,9 +7,22 @@ use App\Model\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Resources\QuestionResource;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class QuestionController extends Controller
 {
+
+    /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('JWT', ['except' => ['index','show']]);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
